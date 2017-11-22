@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -37,7 +38,7 @@ public class Adapter_Recipes extends RecyclerView.Adapter<Adapter_Recipes.MyView
         }
     }
 
-    // --- connect the Layout!! with a inflate and returns it ---
+    // --- connect the CardLayout with a inflate and returns it ---
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View myInflateLayout = LayoutInflater.from(parent.getContext())
@@ -48,8 +49,8 @@ public class Adapter_Recipes extends RecyclerView.Adapter<Adapter_Recipes.MyView
 
     // --- add data for any recipes - enlazar los datos
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-        Recipes recipe = recipesList.get(position);
+    public void onBindViewHolder(final MyViewHolder holder, int position) {
+        final Recipes recipe = recipesList.get(position);
         holder.title.setText(recipe.getName());
         holder.count.setText(recipe.getNumOfRecipes()+ " recipes");
 
@@ -57,6 +58,14 @@ public class Adapter_Recipes extends RecyclerView.Adapter<Adapter_Recipes.MyView
         Glide.with(myContext)
                 .load(recipe.getImgDrawable())
                 .into(holder.drw_img);
+
+        // onClick in the image
+        holder.drw_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(view.getContext(), recipe.getName(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
