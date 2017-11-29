@@ -7,11 +7,9 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -23,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView myTitleImage;
     private List<Recipes> recipesList;
     private RecyclerView recyclerView;
-    private Adapter_Recipes adapter;
+    private AdapterRecipes adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         recipesList = new ArrayList<>();
         myTitleImage = (ImageView) findViewById(R.id.image_title);
         recyclerView = (RecyclerView) findViewById(R.id.my_recyclerView);
-        adapter = new Adapter_Recipes(this, recipesList);
+        adapter = new AdapterRecipes(this, recipesList);
 
         RecyclerView.LayoutManager myLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(myLayoutManager);
@@ -59,16 +57,16 @@ public class MainActivity extends AppCompatActivity {
                 R.drawable.salad
         };
 
-        Recipes r = new Recipes("Cakes", 0, drwImg[0]);
+        Recipes r = new Recipes("Cakes", drwImg[0]);
         recipesList.add(r);
 
-        r = new Recipes("Chicken", 0, drwImg[1]);
+        r = new Recipes("Chicken", drwImg[1]);
         recipesList.add(r);
 
-        r = new Recipes("Meat", 0, drwImg[2]);
+        r = new Recipes("Meat", drwImg[2]);
         recipesList.add(r);
 
-        r = new Recipes("Salad", 0, drwImg[3]);
+        r = new Recipes("Salad", drwImg[3]);
         recipesList.add(r);
 
         adapter.notifyDataSetChanged();

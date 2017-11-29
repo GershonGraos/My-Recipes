@@ -3,6 +3,8 @@
 
     <!--Titles to the MainActivity-->
     <string name="app_title">My Recipes</string>
+    <string name="menu_name">Menu</string>
+
 
 
 </resources>

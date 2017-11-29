@@ -13,13 +13,13 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-public class Adapter_Recipes extends RecyclerView.Adapter<Adapter_Recipes.MyViewHolder>  {
+public class AdapterRecipes extends RecyclerView.Adapter<AdapterRecipes.MyViewHolder>  {
 
     Context myContext;
     List<Recipes> recipesList;
 
     // --- constructor ---
-    public Adapter_Recipes(Context myContext, List<Recipes> recipesList) {
+    public AdapterRecipes(Context myContext, List<Recipes> recipesList) {
         this.myContext = myContext;
         this.recipesList = recipesList;
     }
@@ -33,7 +33,7 @@ public class Adapter_Recipes extends RecyclerView.Adapter<Adapter_Recipes.MyView
             super(itemView);
 
             title = (TextView) itemView.findViewById(R.id.title_recipe);
-            count = (TextView) itemView.findViewById(R.id.numOf_recipes);
+//            count = (TextView) itemView.findViewById(R.id.numOf_recipes);
             drw_img = (ImageView) itemView.findViewById(R.id.image_recipe);
         }
     }
@@ -52,7 +52,7 @@ public class Adapter_Recipes extends RecyclerView.Adapter<Adapter_Recipes.MyView
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final Recipes recipe = recipesList.get(position);
         holder.title.setText(recipe.getName());
-        holder.count.setText(recipe.getNumOfRecipes()+ " recipes");
+//        holder.count.setText(recipe.getNumOfRecipes()+ " recipes");
 
         // loading the title image using Glide library
         Glide.with(myContext)
